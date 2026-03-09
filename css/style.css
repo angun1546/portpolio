@@ -107,23 +107,29 @@ body.dark-theme .cursor-follower { border-color: #FFFFFF; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 0.8rem 2.5rem; /* 높이 축소 및 가로 여백 확보 */
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 1.5rem; /* 상단에서 띄움 */
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
+    width: 90%;
+    max-width: 1200px; /* 최대 너비 제한 */
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 100px; /* 타원형 캡슐 디자인 */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     color: var(--text-primary);
 }
 
 body.dark-theme .header {
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     color: #FFFFFF;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -206,32 +212,44 @@ body.dark-theme .header {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    padding-top: 80px; /* 헤더 높이만큼 상단 여백 확보 */
 }
 
 .hero-title-wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    padding: 5vh 5%; /* 상하 여백 최적화 */
+    gap: 2vh; /* 요소 간 간격 최적화 */
 }
 
 .hero-title {
-    font-size: clamp(4rem, 12vw, 10vw);
+    font-size: clamp(3rem, 10vh, 12vw); /* 화면 높이(vh)를 기준으로 크기 조절하여 잘림 방지 */
     font-weight: 900;
-    line-height: 0.8;
+    line-height: 1.1;
     font-family: var(--font-wanted);
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: inherit;
 }
 
 .hero-image-container {
-    width: clamp(120px, 20vw, 200px);
-    height: clamp(160px, 28vw, 280px);
+    width: auto;
+    height: clamp(200px, 40vh, 450px); /* 이미지 최대 높이를 화면의 40%로 제한 */
+    aspect-ratio: 3 / 4; /* 일정한 비율 유지 */
+    margin: 1vh 0;
     position: relative;
-    border-radius: 100px;
+    border-radius: 180px;
+    z-index: 2;
+    overflow: hidden;
 }
 
 .hero-portrait {
