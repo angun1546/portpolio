@@ -119,6 +119,55 @@ if (splitTextElements.length > 0) {
     });
 }
 
+/* Skill Tags Entrance Animation */
+const skillTags = document.querySelectorAll('.skill-tag');
+if (skillTags.length > 0) {
+    gsap.from(skillTags, {
+        scrollTrigger: {
+            trigger: ".skills-grid",
+            start: "top 85%",
+            toggleActions: "play none none none"
+        },
+        y: 40,
+        opacity: 0,
+        scale: 0.8,
+        duration: 1,
+        stagger: {
+            amount: 0.5,
+            grid: "auto",
+            from: "center"
+        },
+        ease: "elastic.out(1, 0.8)"
+    });
+
+    /* Magnetic Effect for Skill Tags */
+    if (!isTouchDevice) {
+        skillTags.forEach(tag => {
+            tag.addEventListener('mousemove', (e) => {
+                const rect = tag.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(tag, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            });
+
+            tag.addEventListener('mouseleave', () => {
+                gsap.to(tag, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "elastic.out(1, 0.3)"
+                });
+            });
+        });
+    }
+}
+
 /* Dynamic Counter Animation */
 document.querySelectorAll('.counter').forEach(counter => {
     const target = +counter.getAttribute('data-target');

@@ -23,7 +23,6 @@
 - `index.html`: 메인 웹 사이트 구조
 - `style.css`: 테마, 레이아웃 및 애니메이션 스타일
 - `script.js`: 모든 인터랙션 및 애니메이션 로직
-- `public/assets/`: 이미지 및 그래픽 자산
 
 ---
 &copy; 2026 An Gun. All rights reserved.
